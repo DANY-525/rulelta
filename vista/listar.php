@@ -68,18 +68,10 @@
   </div>
 </div>
 
-  
+ 
 
 
   <div id="respuestaEliminar"></div>
-
-
-
-
-
-
-
-
 
 
 
@@ -112,7 +104,6 @@ foreach ($getUser as $key => $value) {
 
          <a id="'.$value['id'].'" class="editar" href="index.php?modulo=usuario&funcion=Editar&id='.$value['id'].'"> <img class="icon" src="vista/img/editar.png"></a>
           <a id="'.$value['id'].'" class="eliminar" href="index.php?modulo=usuario&funcion=Eliminar&id='.$value['id'].'"> <img class="icon" src="vista/img/borar.png">
-
          </th>
       </tr>';
      

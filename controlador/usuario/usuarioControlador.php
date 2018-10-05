@@ -4,7 +4,6 @@
  * 
  */
 
-
 include'./model/usuario/usuarioModel.php';
 class usuarioControlador extends usuarioModel
 {
