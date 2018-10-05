@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<?php include'header.php'; ?>
 
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	
-
-	<title></title>
-</head>
 <body>
 
 <!-- Trigger the modal with a button -->
@@ -42,7 +31,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="test" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -51,8 +40,50 @@
 
 
 
-<?php
+<!-- Trigger the modal with a button -->
+<button id="editarmodal"type="button2" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModaldos">Editar</button>
 
+<!-- Modal -->
+<div id="myModaldos" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title">Editar Persona</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+  
+
+        <div id="respuestaEditar"></div>
+ 
+      </div>
+      <div class="modal-footer">
+        <button id="test" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  
+
+
+  <div id="respuestaEliminar"></div>
+
+
+
+
+
+
+
+
+
+
+
+<?php
 
 $html = '	<div class="table-responsive">
   <table class="table">';
@@ -61,6 +92,8 @@ $html .='  <thead>
       <tr>
         <th>Nombre</th>
         <th>Apelido</th>
+        <th>Cantidad</th>
+
       </tr>
     </thead>
     <tbody>';
@@ -74,6 +107,13 @@ foreach ($getUser as $key => $value) {
       <tr class="success">
         <td>'.$value['Nombre'].'</td>
         <td>'.$value['Apellido'].'</td>
+        <td>'.$value['Cantidad'].'</td>
+        <th>
+
+         <a id="'.$value['id'].'" class="editar" href="index.php?modulo=usuario&funcion=Editar&id='.$value['id'].'"> <img class="icon" src="vista/img/editar.png"></a>
+          <a id="'.$value['id'].'" class="eliminar" href="index.php?modulo=usuario&funcion=Eliminar&id='.$value['id'].'"> <img class="icon" src="vista/img/borar.png">
+
+         </th>
       </tr>';
      
   
@@ -87,8 +127,7 @@ echo $html;
 
 ?>
 
-<script type="text/javascript" src="vista/js/desarrollo.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<?php include'footer.php'; ?>
 
 </body>
 </html>

@@ -42,9 +42,6 @@ class Index
 }
 
 
-
-
-
 $metodo = $_REQUEST['modulo'];
 
 $funcion = $_REQUEST['funcion'];
