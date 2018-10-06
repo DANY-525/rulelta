@@ -5,7 +5,7 @@ function cargar(){
 $( "#exampleFormControlSelect1").submit(function( event ) {
      // alert( "Handler for .submit() called." );
       event.preventDefault();
-      alert("entre");
+     
 
     var url="index.php?modulo=jugador&funcion=play";
 
@@ -17,19 +17,28 @@ $( "#exampleFormControlSelect1").submit(function( event ) {
             processData: false,
             type: 'POST',
             success: function(data){
+
+            var json = jQuery.parseJSON(data)
+
           
-               document.getElementById("respuestaJugar").innerHTML= data
+            htm = ""
+            htm = "<ol>"
+             htm = "<h1>Datos Apuesta</hi>"
+
+            htm+="<li>Color Apostado: "+json.colorApuesta+" </li>"
+            htm+="<li>Color Ganador: "+json.ganador+"</li>"
+            htm+="<li>Valor Apostatado: "+json.valorApuesta+"</li>"
+            htm+="<li>resultado: "+json.resultadoApuesta+"</li>"
+            htm+="<li>ganancia: "+json.ganancia+"</li>"
+             htm+="<li>perdida: "+json.perdida+"</li></ol>"
+
+
+               document.getElementById("respuestaJugar").innerHTML= htm
 
             }
         })
 
   })
-
-
-
-
-
-
 
 
 
@@ -48,7 +57,6 @@ $( "#selecionarUsuario").submit(function( event ) {
             processData: false,
             type: 'POST',
             success: function(data){
-
 
 
           
