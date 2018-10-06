@@ -10,6 +10,29 @@
 
 		}
 
+		//obtenemos los valores que puedo apostar cada jugador
+		function getValores($jugador){
+
+			$cantidad = 0;
+			foreach ($jugador as $key => $value) {
+				$cantidad = $value['Cantidad'];
+			}
+
+			$operacion = 10 * $cantidad/100;
+			$operacion2 = 8 * $cantidad/100;
+			$operacion3 = 15 * $cantidad/100;
+
+			$array = [
+			    "10" => $operacion,
+			    "8" =>  $operacion2,
+			    "15" => $operacion3,
+			];
+
+			return $array;
+
+		}
+
+
 
 		function login(){
 
@@ -17,6 +40,9 @@
 			$nombre  = $_REQUEST['nombre'];
 
 			$jugador = jugadorModel::get($nombre);
+
+
+			$valores = self::getValores($jugador);
 
 			include './vista/jugar.php';
 
@@ -37,15 +63,15 @@
 
 			if($numeroRuleta >= 49){
 
-			 	$ganador ="gano Rojo";
+			 	$ganador ="rojo";
 
 			 	   
 			} if($numeroRuleta <= 52){
 
-			 	$ganador = "gano Negro";
+			 	$ganador = "negro";
 			}if($numeroRuleta == 50  || $numeroRuleta == 51){
 
-			 	$ganador = "gano Verde";
+			 	$ganador = "verde";
 
 			}
 
@@ -62,31 +88,13 @@
 
 			//obtenemos un numero random del 1 al 5
 
-			 echo $numeroRuleta  = self::NumeroRandom();
-
+			 $numeroRuleta  = self::NumeroRandom();
 			 //como l probabilidad es de 49
-	        
-			 if($numeroRuleta >= 49){
+			 $ganador =  self::ganador($numeroRuleta);
 
-			 	echo "gano";
-			 	echo "</br>";
+			 echo $ganador;
 
-			 	echo $numeroRuleta;
-
-			 	 $ganador =  self::ganador($numeroRuleta);
-
-			 	 
-
-			}else{
-
-				echo "perdio";
-				echo "</br>";
-
-				 $ganador =  self::ganador($numeroRuleta);
-
-			 	 echo $ganador;
-
-			}
+		
 
 		}//end function verde
 
@@ -99,26 +107,11 @@
 
 			 $numeroRuleta  = self::NumeroRandom();
 
-			 //como l probabilidad es de 49
-	        
-			 if($numeroRuleta == 50  || $numeroRuleta == 51){
+			 $ganador =  self::ganador($numeroRuleta);
 
-			 	echo "gano";
-			 	echo "</br>";
-			 	 $ganador =  self::ganador($numeroRuleta);
+			  echo $ganador;
 
-			 	 echo $ganador;
-
-			}else{
-
-				 $ganador =  self::ganador($numeroRuleta);
-
-			 	 echo $ganador;
-			 	 echo "</br>";
-
-				echo "perdio";
-			}
-
+		
 		}//end function negro
 
 
@@ -132,26 +125,9 @@
 
 			 //como l probabilidad es de 49
 	        
-			 if($numeroRuleta <= 52){
+			  $ganador =  self::ganador($numeroRuleta);
 
-			 	echo "gano";
-
-
-			 	echo $numeroRuleta; 
-			 	 $ganador =  self::ganador($numeroRuleta);
-			 	 echo "</br>";
-			 	 
-			}else{
-
-				echo "perdio";
-					echo $numeroRuleta; 
-				
-				echo "</br>";
-				 $ganador =  self::ganador($numeroRuleta);
-
-			 	
-
-			}
+			  echo $ganador;
 
 		}//end function negro
 
