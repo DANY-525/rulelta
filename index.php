@@ -44,14 +44,15 @@ class Index
 
 $metodo = $_REQUEST['modulo'];
 
+
+
+
 $funcion = $_REQUEST['funcion'];
+
 
 $objEnviar = new Index($metodo,$funcion);
 
 $objEnviar->genararUlr();
-
-
-
 
 
 

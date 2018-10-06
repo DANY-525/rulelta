@@ -125,6 +125,8 @@
 
 
 			$array = [
+
+				"usuario" => $idUsuario,
 			    "ganador" => $ganador,
 			    "colorApuesta" =>  $colorApostado,
 			    "valorApuesta" => $valorApuesta,
@@ -225,6 +227,41 @@
 			  return $ganador;
 
 		}//end function negro
+
+
+
+
+
+		function Guardar(){
+
+			
+			$idusuario =  $_REQUEST['id'];
+			$colorApuesta =  $_REQUEST['colorApuesta'];
+			$valorApuesta =  $_REQUEST['valorApuesta'];
+			$resultadoApuesta =  $_REQUEST['resultadoApuesta'];
+		    $ganancia =  $_REQUEST['ganancia'];
+			$perdida = $_REQUEST['perdida'];
+			$ganador = $_REQUEST['ganador'];
+
+
+			$UltmoId = jugadorModel::guardarApuesta($idusuario,$colorApuesta,$valorApuesta,$resultadoApuesta,$ganancia,$perdida,$ganador);
+
+			echo $UltmoId;
+		}//end Guardar Datos Apuesta
+
+
+
+
+		function UltimasJugadas(){
+
+		
+			$respuesta	 = 	jugadorModel::UltimasApuestas();
+
+
+			echo json_encode($respuesta);
+
+
+		}
 
 
 	}

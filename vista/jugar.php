@@ -2,6 +2,21 @@
 
 <body>
 
+
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Bienvenidos Al Casino</a>
+  </li>
+    <a class="nav-link disabled" href="#"> escoje tu valor de apuesta y color de apuesta en la RULETA MILLONARIA</a>
+  </li>
+   </li>
+    <a class="nav-link disabled" href="#">rojo negro 48 % probablidades de ganar ganas el doble verde 2% de probabilidad ganas 15 veces la apuesta</a>
+  </li>
+</ul>
+
+
+
+
 <?php
 
 	$html = '	<div class="table-responsive">
@@ -29,10 +44,9 @@
 
          <td>
 
-         <a id="'.$value['id'].'" class="verde" href="index.php?modulo=jugador&funcion=Verde&id='.$value['id'].'">verde</a>
+         <a id="historial" class="alert alert-primary"  class="historial" href="index.php?modulo=jugador&funcion=Historial&id='.$value['id'].'">Ultimas Jugadas</a>
 
-         <a id="'.$value['id'].'" class="negro" href="index.php?modulo=jugador&funcion=Negro&id='.$value['id'].'">negro</a>
-          <a id="'.$value['id'].'" class="rojo" href="index.php?modulo=jugador&funcion=Rojo&id='.$value['id'].'">rojo</a>
+         
          </td>
       </tr>';
 
@@ -145,6 +159,13 @@
 
 
 <div id="respuestaJugar"></div>
+
+</br>
+
+<div id="respuestaGuardar"></div>
+
+
+<div id="respuestaHistorial"></div>
 
 
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>

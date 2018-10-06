@@ -44,6 +44,23 @@
 			}
 
 		}
+
+
+
+		function ultimo($sql){
+
+			$conexion  = new conexion();
+
+	        $result =  $conexion->conectarse();
+	 
+	 
+	        $resultado = $result->query($sql);
+
+
+			 $retornarLastId = $result->insert_id;
+
+       		 return $retornarLastId;
+		}
 		
 		
 

@@ -46,6 +46,41 @@
 
 
 
+		function guardarApuesta($idusuario,$colorApuesta,$valorApuesta,$resultadoApuesta,$ganancia,$perdida,$ganador){
+
+
+			$sql ="INSERT INTO jugada (idJugada, idUsuario,colorApostado, valorApuesta, resultadoApuesta, ganancia, perdida, ganador) VALUES (0, '$idusuario', '$colorApuesta,', '$valorApuesta', '$resultadoApuesta', '$ganancia', '$perdida', '$ganador')";
+
+
+			$resultado = masterModel::ultimo($sql);
+
+			return $resultado;
+
+
+
+
+
+		}//guardar apuesta fin
+
+
+
+
+		function UltimasApuestas(){
+
+
+			$sql = "SELECT * FROM jugada  ORDER by idJugada DESC LIMIT 5";
+			$resultado = masterModel::select($sql);
+			return $resultado;
+
+
+		}
+
+
+
+
+
+
+
 
 	}	
 
