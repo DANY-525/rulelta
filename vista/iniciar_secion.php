@@ -18,7 +18,7 @@
       </div>
       <div class="modal-body">
        
-	     <form id="selecionarUsuario">
+	     <form method="post" action="index.php?modulo=jugador&funcion=login">
 
 			<input type="text" name="nombre"></br>
 			
@@ -34,12 +34,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-<div id="respuestaJugar"></div>
-
 
 
 

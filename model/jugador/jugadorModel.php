@@ -13,6 +13,40 @@
 
 		}
 
+
+		function sumarCantidad($idUsuario,$ganancia,$cantidad){
+
+			$resultado = $ganancia + $cantidad;
+
+
+			$sql = "UPDATE usuario SET Cantidad = '$resultado' WHERE id = $idUsuario;";
+
+			$resultado = masterModel::add($sql);
+
+
+			return $resultado;
+
+
+
+
+		}
+
+		function restarCantidad($idUsuario,$valorApuesta,$cantidad){
+
+			$resultado =  $cantidad - $valorApuesta;
+
+			$sql = "UPDATE usuario SET Cantidad = '$resultado' WHERE id = $idUsuario;";
+
+			$resultado = masterModel::add($sql);
+
+			return $resultado;
+
+
+		}
+
+
+
+
 	}	
 
 

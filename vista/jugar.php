@@ -1,3 +1,7 @@
+<?php include'header.php'; ?>
+
+<body>
+
 <?php
 
 	$html = '	<div class="table-responsive">
@@ -53,6 +57,22 @@
 
 <form id="exampleFormControlSelect1">
 
+
+	<?php
+
+	foreach ($jugador as $key => $value) {
+
+	$html ='<input type="hidden" name="cantidad" value="'.$value['Cantidad'].'">';
+
+	$html .='<input type="hidden" name="id" value="'.$value['id'].'">';
+
+	echo "$html";
+
+   }
+
+
+	?>
+
 	<div class="form-group">
 	<label for="exampleFormControlSelect1">Por Favor Seleccione el valor de la apuesta</label>
 
@@ -60,7 +80,7 @@
 	<?php
 
 
-	$html = '<select class="form-control" id="exampleFormControlSelect1">';
+	$html = '<select name="selecionable" class="form-control" id="exampleFormControlSelect1">';
 	foreach ($valores as $key => $value) {
 
 		
@@ -84,7 +104,9 @@
 
 
 </br>
-	
+
+
+
   <fieldset class="form-group">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Seleccione el color </legend>
@@ -122,4 +144,15 @@
 
 
 
+<div id="respuestaJugar"></div>
+
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+
+
+<?php include'footer.php'; ?>
+
+</body>
+</html>
 

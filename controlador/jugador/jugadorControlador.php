@@ -49,6 +49,100 @@
 		}
 
 
+		/*funcion que dicide cuanto restarle o quitarle dependiendo si acierta la ruleta*/
+		function Evaluaciones($ganador,$colorApostado,$valorApuesta){
+
+
+			$valorApuesta;
+
+
+			$nuevoValor=0;
+
+			if($colorApostado == "Verde" and $ganador == "Verde"){
+
+
+				$nuevoValor = $valorApuesta *15;
+
+
+
+			}
+
+
+			if($colorApostado == "Negro" and $ganador == "Negro"){
+
+
+
+				$nuevoValor = $valorApuesta *2;
+
+			}
+
+			if($colorApostado == "Rojo" and $ganador == "Rojo"){
+
+				$nuevoValor = $valorApuesta *2;
+
+			}
+
+			return $nuevoValor;
+
+
+		}
+
+
+		//funcion encargada de la ejecucion de los juegos
+		function play(){
+
+			$idUsuario= $_POST['id'];
+			$cantidad = $_POST['cantidad'];
+			$valorApuesta = $_POST['selecionable'];
+
+			$colorApostado = $_POST['gridRadios'];
+
+			
+			$ganador =  self::$colorApostado();
+
+
+			$respuesta =	self::Evaluaciones($ganador,$colorApostado,$valorApuesta);
+
+
+			$resultado = "";
+			$ganancia = "";
+
+			$perdida ="";
+
+			if($respuesta != 0){
+				$ganancia = $respuesta;
+				jugadorModel::sumarCantidad($idUsuario,$ganancia,$cantidad);
+				$resultado = "gano la apuesta";
+
+			}else{
+
+
+				jugadorModel::restarCantidad($idUsuario,$valorApuesta,$cantidad);
+				$perdida = $valorApuesta;
+				$resultado = "perdio la apuesta";
+			}
+
+
+
+			$array = [
+			    "ganador" => $ganador,
+			    "colorApuesta" =>  $colorApostado,
+			    "valorApuesta" => $valorApuesta,
+			    "resultadoApuesta" => $resultado,
+			    "ganancia" => $ganancia,
+			    "perdida" => $perdida,
+			];
+
+
+			 echo json_encode($array);
+			
+
+
+		}
+
+
+
+
 
 		function NumeroRandom(){
 
@@ -63,15 +157,15 @@
 
 			if($numeroRuleta >= 49){
 
-			 	$ganador ="rojo";
+			 	$ganador ="Rojo";
 
 			 	   
 			} if($numeroRuleta <= 52){
 
-			 	$ganador = "negro";
+			 	$ganador = "Negro";
 			}if($numeroRuleta == 50  || $numeroRuleta == 51){
 
-			 	$ganador = "verde";
+			 	$ganador = "Verde";
 
 			}
 
@@ -92,7 +186,8 @@
 			 //como l probabilidad es de 49
 			 $ganador =  self::ganador($numeroRuleta);
 
-			 echo $ganador;
+
+			return $ganador;
 
 		
 
@@ -109,7 +204,7 @@
 
 			 $ganador =  self::ganador($numeroRuleta);
 
-			  echo $ganador;
+			  return $ganador;
 
 		
 		}//end function negro
@@ -127,7 +222,7 @@
 	        
 			  $ganador =  self::ganador($numeroRuleta);
 
-			  echo $ganador;
+			  return $ganador;
 
 		}//end function negro
 
